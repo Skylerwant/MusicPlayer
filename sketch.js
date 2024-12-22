@@ -6,10 +6,6 @@ let button;
 
 let button2;
 
-let button3;
-
-let button4;
-
 let buttonpc;
 
 let buttonpv;
@@ -45,44 +41,50 @@ function setup() {
 
   button.mousePressed(playMusic1);
 
-  //   button2 = createButton("-");
 
-  //   button2.mousePressed(minusVol);
+  button2 = createButton("play2");
+  button2.position(500, 660);
 
-  //   button3 = createButton("+");
-
-  //   button3.mousePressed(plusVol);
-
-  button4 = createButton("play2");
-
-  button4.mousePressed(playMusic2);
+  button2.mousePressed(playMusic2);
 
   buttonpc = createButton("pause1");
+  buttonpc.position(20, 800);
 
   buttonpc.mousePressed(pauseMusic1);
 
   buttonpv = createButton("pause2");
+  buttonpv.position(500, 800);
 
   buttonpv.mousePressed(pauseMusic2);
 
   buttonj = createButton("jump1");
+  buttonj.position(20, 900);
 
   buttonj.mousePressed(jumpSong1);
 
   buttonj2 = createButton("jump2");
+   buttonj2.position(500, 900);
 
   buttonj2.mousePressed(jumpSong2);
 
-  slider = createSlider(0, 2, 1, 0.01);
+   slider = createSlider(0, 2, 1, 0.01);
+  slider.position(250, 1000);
+  createP("Volume").position(250, 970);
+
   sliderPan = createSlider(-1, 1, 0, 0.01);
+  sliderPan.position(250, 1100);
+  createP("Pan").position(250, 1070);
+
   sliderRate = createSlider(0, 2, 1, 0.1);
+  sliderRate.position(250, 1200);
+  createP("Rate").position(250, 1170);
 }
 
 
 function playMusic1() {
   if (voi.isPlaying()) {
     voi.stop();
-    button4.html("play2");
+    button2.html("play2");
   }
 
   if (!cra.isPlaying()) {
@@ -102,10 +104,10 @@ function playMusic2() {
 
   if (!voi.isPlaying()) {
     voi.play();
-    button4.html("stop2");
+    button2.html("stop2");
   } else {
     voi.stop();
-    button4.html("play2");
+    button2.html("play2");
   }
 }
 
@@ -119,7 +121,7 @@ function pauseMusic1() {
 function pauseMusic2() {
   {
     if (voi.isPlaying()) voi.pause();
-    button4.html("play2");
+    button2.html("play2");
   }
 }
 
@@ -142,6 +144,10 @@ function draw() {
   vol = slider.value();
 
   console.log(amp.getLevel() * 10000);
+  
+  stroke(0);
+  line(0, height / 2, width, height / 2);
+
 
   fill(255, 255, 255);
   ellipse(100, 100, 50, 50);
@@ -158,8 +164,8 @@ function checkStopConditions() {
     button.html("play1");
   }
 
-  if (!voi.isPlaying() && button4.html() === "stop2") {
-    button4.html("play2");
+  if (!voi.isPlaying() && button2.html() === "stop2") {
+    button2.html("play2");
   }
 }
 
