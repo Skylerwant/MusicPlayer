@@ -18,6 +18,8 @@ let vol;
 
 let amp;
 
+let sushi;
+
 var slider;
 
 let silderPan;
@@ -27,6 +29,8 @@ function preload() {
   soundFormats("m4a", "ogg");
   cra = loadSound("taste.m4a");
   voi = loadSound("1to13.m4a");
+  sushi= loadImage("sushi.png")
+  
 }
 
 function setup() {
@@ -37,7 +41,7 @@ function setup() {
   vol = 0.5;
 
   button = createButton("play1");
-  button.position(20, 660);
+  button.position(100, 660);
 
   button.mousePressed(playMusic1);
 
@@ -48,17 +52,17 @@ function setup() {
   button2.mousePressed(playMusic2);
 
   buttonpc = createButton("pause1");
-  buttonpc.position(20, 800);
+  buttonpc.position(100, 780);
 
   buttonpc.mousePressed(pauseMusic1);
 
   buttonpv = createButton("pause2");
-  buttonpv.position(500, 800);
+  buttonpv.position(500, 780);
 
   buttonpv.mousePressed(pauseMusic2);
 
   buttonj = createButton("jump1");
-  buttonj.position(20, 900);
+  buttonj.position(100, 900);
 
   buttonj.mousePressed(jumpSong1);
 
@@ -142,18 +146,23 @@ function draw() {
   voi.rate(sliderRate.value());
 
   vol = slider.value();
+  
+    if (sushi) {
+    image(sushi, 500-amp.getLevel() * 15000, 270, 200, 100);
+  }
 
-  console.log(amp.getLevel() * 10000);
+  console.log(amp.getLevel() * 100);
   
   stroke(0);
   line(0, height / 2, width, height / 2);
+  
+  fill(255, 255, 0);
+  arc(150, 320, 300+amp.getLevel() * 1000, 300+amp.getLevel() * 1000, QUARTER_PI, TWO_PI - QUARTER_PI, PIE);
 
 
-  fill(255, 255, 255);
-  ellipse(100, 100, 50, 50);
-  ellipse(300, 100, 50, 50);
-  fill(250, 0, 100);
-  rect(70, 150, amp.getLevel() * 10000, amp.getLevel() * 10000);
+  fill(0, 0, 0);
+  ellipse(150, 230, 25, 25);
+ 
 
 
   checkStopConditions();
