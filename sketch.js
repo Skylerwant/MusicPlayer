@@ -16,6 +16,8 @@ let buttonpv;
 
 let buttonj;
 
+let buttonj2;
+
 let vol;
 
 let amp; 
@@ -66,6 +68,10 @@ function setup() {
   buttonj = createButton("jump1");
 
   buttonj.mousePressed(jumpSong);
+  
+  buttonj2 = createButton("jump2");
+
+  buttonj2.mousePressed(jumpSong);
 
   slider = createSlider(0, 2, 1, 0.01);
   sliderPan = createSlider(-1, 1, 0, 0.01);
@@ -140,4 +146,9 @@ function plusVol() {
 function jumpSong() {
   var t = random(cra.duration());
   cra.jump(t);
+}
+
+function jumpSong() {
+  var t = random(voi.duration());
+  voi.jump(t);
 }
