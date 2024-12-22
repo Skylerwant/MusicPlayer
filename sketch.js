@@ -26,19 +26,20 @@ let silderPan;
 let silderRate;
 
 function preload() {
-  soundFormats("mp3", "ogg");
-  cra = loadSound("cravity.mp3");
-  voi = loadSound("voice.mp3");
+  soundFormats("m4a", "ogg");
+  cra = loadSound("taste.m4a");
+  voi = loadSound("1to13.m4a");
 }
 
 function setup() {
-  createCanvas(640, 640);
+  createCanvas(640, 1280);
   
   amp = new p5.Amplitude();
 
   vol = 0.5;
 
   button = createButton("play1");
+   button.position(20, 660); 
 
   button.mousePressed(playMusic1);
 
@@ -84,14 +85,14 @@ function draw() {
 
   vol = slider.value();
   
-  console.log(amp.getLevel()*1000);
+  console.log(amp.getLevel()*10000);
 
   
   fill(255, 255, 255);
   ellipse(100, 100, 50, 50);
   ellipse(300, 100, 50, 50);
    fill(250, 0,100);
-  rect(70, 150, amp.getLevel()*1000, amp.getLevel()*1000);
+  rect(70, 150, amp.getLevel()*10000, amp.getLevel()*10000);
 }
 
 function playMusic1() {
