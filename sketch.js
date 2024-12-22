@@ -80,6 +80,11 @@ function setup() {
 
 
 function playMusic1() {
+  if (voi.isPlaying()) {
+    voi.stop();
+    button4.html("play2");
+  }
+
   if (!cra.isPlaying()) {
     cra.play();
     button.html("stop1");
@@ -90,6 +95,11 @@ function playMusic1() {
 }
 
 function playMusic2() {
+  if (cra.isPlaying()) {
+    cra.stop();
+    button.html("play1");
+  }
+
   if (!voi.isPlaying()) {
     voi.play();
     button4.html("stop2");
@@ -112,6 +122,8 @@ function pauseMusic2() {
     button4.html("play2");
   }
 }
+
+
 
 function draw() {
   
